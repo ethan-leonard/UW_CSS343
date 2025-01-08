@@ -4,7 +4,7 @@ class Solution {
 public:
     std::vector<int> nodes;
 
-    std::vector<int> inorderTraversal(std::TreeNode* root) {
+    std::vector<int> inorderTraversal(TreeNode* root) {
         if (root == nullptr) {
             return nodes;
         }
