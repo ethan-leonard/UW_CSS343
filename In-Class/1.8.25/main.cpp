@@ -1,5 +1,7 @@
 #include <vector>
 #include <queue>
+#include <algorithm>
+
 
 // 102. Binary Tree Level Order Traversal
 class Solution {
@@ -65,6 +67,22 @@ public:
         postorderTraversal(root->right);
         nodes.push_back(root->val);
         return nodes;
+    }
+};
+
+// 268. Missing Number
+class Solution {
+public:
+    int missingNumber(std::vector<int>& nums) {
+        stable_sort(nums.begin(), nums.end());
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] != i) {
+                return i;
+            }
+        }
+
+        return nums.size();
     }
 };
 
