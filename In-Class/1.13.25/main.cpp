@@ -25,3 +25,21 @@ public:
         } return isSymmetric(root->left, root->right);
     }
 };
+
+// 98. Validate Binary Search Tree
+class Solution {
+public:
+    bool isValidBST(TreeNode* curr, TreeNode* min, TreeNode* max) {
+        if (curr == nullptr) return true;
+        if (min != nullptr && curr->val <= min->val) return false;
+        if (max != nullptr && curr->val >= max->val) return false;
+        return isValidBST(curr->left, min, curr) &&
+            isValidBST(curr->right, curr, max);
+    }
+
+    bool isValidBST(TreeNode* root) {
+        if (root == nullptr) return true;
+        return isValidBST(root->left, nullptr, root) &&
+            isValidBST(root->right, root, nullptr);
+    }
+};
