@@ -64,6 +64,25 @@ public:
         } return false;
     }
 
+    bool bfs(int curr) {
+        if (curr == destination) return true;
+        queue<int> q;
+        q.push(curr);
+        visited.insert(curr);
+
+        while (!q.empty()) {
+            int top = q.front();
+            q.pop();
+            if (top == destination) return true;
+            for (int neighbor : adj[top]) {
+                if (!visited.contains(neighbor)) {
+                    q.push(neighbor);
+                    visited.insert(neighbor);
+                } 
+            }
+        } return false;
+    }
+
     bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
         this->destination = destination;
         for (vector<int> edge : edges) {
